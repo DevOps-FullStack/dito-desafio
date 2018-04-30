@@ -1,0 +1,16 @@
+FROM node:alpine as collector
+
+COPY . /usr/share/api
+
+WORKDIR /usr/share/api
+
+RUN npm i
+
+ENV NODE_ENV=production
+ENV PORT=3000
+ENV ELASTICSEARCH_SERVER=elasticsearch
+ENV ELASTICSEARCH_PORT=9200
+
+EXPOSE 3000
+
+ENTRYPOINT [ "node","index.js" ]

@@ -1,0 +1,18 @@
+version: '3'
+services: 
+  api:
+    build: 
+      context: ./collector
+    ports: 
+      - 3000:3000
+    links: 
+      - elasticsearch:elasticsearch
+    environment: 
+      - ELASTICSEARCH_SERVER=elasticsearch
+  elasticsearch:    
+    image: blacktop/elasticsearch:6.2
+    ports: 
+      - 9200:9200
+      - 9300:9300
+    
+    
